@@ -7,17 +7,6 @@ extern void base_init(void);
 
 uint8_t ucHeap[ configTOTAL_HEAP_SIZE ] __attribute__((section(".sram_data")));
 
-
-void bus_init(void)
-{
-
-}
-
-void chip_init(void)
-{
-
-}
-
 void driver_init(void)
 {
     base_init();
@@ -36,7 +25,9 @@ void application_init(void)
 
 int main(void)
 {
-    
+    driver_init();
+
+    application_init();
 
     pie_kernel_start();
 }
