@@ -2,6 +2,6 @@
 #define __LED_SERVER_H__
 #include <bus/pin.h>
 
-void led_server_init(struct pin* pin);
+void led_server_init(pin_t* pin);
 
 #endif

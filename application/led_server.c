@@ -4,7 +4,7 @@
 
 static void led_thread(void const* arg)
 {
-    struct pin* pin = (struct pin*)arg;
+    pin_t* pin = (pin_t*)arg;
 
     for(;;)
     {
@@ -15,7 +15,7 @@ static void led_thread(void const* arg)
     }
 }
 
-void led_server_init(struct pin* pin)
+void led_server_init(pin_t* pin)
 {
     osThreadDef(led, led_thread, osPriorityNormal, 0, 256);
     osThreadCreate(osThread(led), pin);
