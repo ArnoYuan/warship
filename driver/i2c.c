@@ -1,7 +1,10 @@
 #include <common/pie.h>
 #include <bus/i2c_bit.h>
-#include "iic.h"
+#include "i2c.h"
 #include "stm32f1xx_hal.h"
+
+IMPORT_I2C(0);
+
 
 #define IIC_SCL_PIN           GPIO_PIN_10
 #define IIC_SCL_PORT          GPIOB
@@ -98,9 +101,9 @@ static void i2c_gpio_init(void)
     HAL_GPIO_Init(IIC_SDA_PORT, &GPIO_InitStruct);
 }
 
-void i2c_hw_init(struct i2c* i2c)
+void i2c_hw_init(void)
 {
     i2c_gpio_init();
     
-    i2c_bit_init(&i2c_bit, i2c);
+    i2c_bit_init(I2C(0), &i2c_bit);
 }

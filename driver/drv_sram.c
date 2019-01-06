@@ -169,7 +169,7 @@ void sram_fsmc_init(void)
 
 void sram_test(void)
 {
-    pi_print("run sram test.\r\n");
+    pie_print("run sram test.\r\n");
     uint8_t wr_data[] = {0, 1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 0, 1,1,1,1,5,5};
     sram_write(0x00, wr_data, sizeof(wr_data));
     uint8_t rd_data[sizeof(wr_data)];
@@ -178,14 +178,14 @@ void sram_test(void)
 
     for(int i = 0; i < sizeof(rd_data); i++)
     {
-      pi_print("%d ", rd_data[i]);
+      pie_print("%d ", rd_data[i]);
     }
-    pi_print("\r\n");
+    pie_print("\r\n");
 }
 
 void sram_hw_init(void)
 {
-    pi_print("sram hw init...\r\n");
+    pie_print("sram hw init...\r\n");
     //sram_gpio_init();
     //sram_fsmc_init();
     

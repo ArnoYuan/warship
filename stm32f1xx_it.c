@@ -159,7 +159,7 @@ void DebugMon_Handler(void)
   */
 void SysTick_Handler(void)
 {
-  pie_kernel_periodic();
+  kernel_periodic();
   HAL_IncTick();
   lv_tick_inc(5);
 }

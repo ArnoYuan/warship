@@ -1,16 +1,22 @@
 #include <common/pie.h>
-
-
+#include <chip/eeprom.h>
+#include <driver/drv_sram.h>
+#include <driver/i2c.h>
 
 extern void base_init(void);
+
+MODULE_I2C(0);
 
 
 uint8_t ucHeap[ configTOTAL_HEAP_SIZE ] __attribute__((section(".sram_data")));
 
 void driver_init(void)
 {
+    sram_hw_init();
+
     base_init();
 
+    i2c_hw_init();
 
     pie_print("driver init pass.\r\n");
 }
@@ -29,5 +35,5 @@ int main(void)
 
     application_init();
 
-    pie_kernel_start();
+    kernel_start();
 }
