@@ -15,12 +15,14 @@
 
 extern void base_init(void);
 
+IMPORT_STDIO();
+
 MODULE_I2C(0);
 MODULE_PIN(0);
 MODULE_SPI(0);
 MODULE_SPI(1);
 MODULE_SERIAL(0);
-MODULE_STDIO();
+
 
 uint8_t ucHeap[ configTOTAL_HEAP_SIZE ] __attribute__((section(".sram_data")));
 
@@ -47,8 +49,7 @@ void driver_init(void)
     base_init();
     uart_hw_init();
 
-    STDIO()->private_data = SERIAL(0);
-    device_init(STDIO(), &stdio_ops);
+    stdio_set_port(SERIAL(0), &stdio_ops);
 
     i2c_hw_init();
     spi_hw_init();
