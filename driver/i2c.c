@@ -1,7 +1,7 @@
 #include <common/pie.h>
 #include <bus/i2c_bit.h>
 #include "i2c.h"
-#include "stm32f1xx_hal.h"
+#include <stm32f1xx_hal.h>
 
 IMPORT_I2C(0);
 
